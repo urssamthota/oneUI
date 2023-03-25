@@ -1,0 +1,179 @@
+<!-- <mat-toolbar >
+  <span class="md-display-1">Update - Deployment Request</span>
+  <button mat-icon-button matTooltip="Click to close" (click)="onClose()" color="primary" position="end">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar> -->
+<!-- <p></p> -->
+<h2 mat-dialog-title>{{dataMainService.formActionType}} - Deployment Request</h2>
+<!-- <mat-divider></mat-divider> -->
+<!-- <p></p> -->
+<form [formGroup]="dataMainService.form" class="md-display-1" (submit)="onSubmit()">
+  <mat-dialog-content class="mat-typography">
+    <!-- <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="example-container"> -->
+    <!-- <input type="hidden" formControlName="$key"> -->
+
+    <h3>Identifiers</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Target data center</mat-label>
+      <mat-select formControlName="site">
+        <mat-option value="CGV">CGV</mat-option>
+        <mat-option value="PLZ">PLZ</mat-option>
+        <mat-option value="ACTIVE">ACTIVE</mat-option>
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Application Tower</mat-label>
+      <mat-select formControlName="apptower">
+        <mat-option value="Apps1">Apps1</mat-option>
+        <mat-option value="Apps2">Apps2</mat-option>
+        <mat-option value="SS">SS</mat-option>
+        <mat-option value="CDO">CDO</mat-option>
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Max 50 characters" appearance="fill">
+      <mat-label>Change Id</mat-label>
+      <input formControlName="changeid" matInput #input maxlength="50" placeholder="Ex. CHG12345">
+      <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+      <mat-label>#ID</mat-label>
+      <input readonly formControlName="id" matInput #input maxlength="100"
+        placeholder="Ex. 039e60bb-6e67-4f65-ac8f-8deb60c03b20">
+      <mat-hint align="end">{{input.value?.length || 0}}/100</mat-hint>
+    </mat-form-field>
+
+    <h3>Application Details</h3>
+    <mat-form-field hintLabel="Max 50 characters" appearance="fill">
+      <mat-label>Product Name</mat-label>
+      <input formControlName="productname" matInput #input maxlength="50" placeholder="Ex. CHG12345">
+      <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Max 50 characters" appearance="fill">
+      <mat-label>Application Name</mat-label>
+      <input formControlName="appname" matInput #input maxlength="50" placeholder="Ex. CHG12345">
+      <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Max 50 characters" appearance="fill">
+      <mat-label>Release</mat-label>
+      <input formControlName="release" matInput #input maxlength="50" placeholder="2022-02">
+      <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+
+
+
+
+    <mat-form-field hintLabel="DevOps status" appearance="fill">
+      <mat-label>Status</mat-label>
+      <input formControlName="status" matInput #input maxlength="50" placeholder="Pass/Fail/Migration Approved">
+      <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+
+    <h3>Build Information</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Target Environment</mat-label>
+      <mat-select formControlName="envtype">
+        <mat-option value="DEV">DEV</mat-option>
+        <mat-option value="SIT">SIT</mat-option>
+        <mat-option value="QA">QA</mat-option>
+        <mat-option value="UAT">UAT</mat-option>
+        <mat-option value="HF">HF</mat-option>
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Max 50 characters" appearance="fill">
+      <mat-label>Defects to deploy</mat-label>
+      <input formControlName="defectlist" matInput #input maxlength="50" placeholder="45123,52633">
+      <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="To filter the deployment assets or items" appearance="fill">
+      <mat-label>Tags</mat-label>
+      <input formControlName="tags" matInput #input maxlength="50" placeholder="45123,52633">
+      <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Build assets</mat-label>
+      <mat-select formControlName="buildassettypes">
+        <mat-option value="msapp">msapp</mat-option>
+        <mat-option value="mssql">mssql</mat-option>
+        <mat-option value="datastage">datastage</mat-option>
+        <mat-option value="file">file</mat-option>
+        <mat-option value="unix">unix</mat-option>
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Deploy assets</mat-label>
+      <mat-select formControlName="deployassettypes">
+        <mat-option value="msapp">msapp</mat-option>
+        <mat-option value="mssql">mssql</mat-option>
+        <mat-option value="datastage">datastage</mat-option>
+        <mat-option value="file">file</mat-option>
+        <mat-option value="unix">unix</mat-option>
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Post deploy assets</mat-label>
+      <mat-select formControlName="postdeployassettypes">
+        <mat-option value="msapp">msapp</mat-option>
+        <mat-option value="mssql">mssql</mat-option>
+        <mat-option value="datastage">datastage</mat-option>
+        <mat-option value="file">file</mat-option>
+        <mat-option value="unix">unix</mat-option>
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Framework Options</mat-label>
+      <mat-select formControlName="frameworkoptions">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+
+    <h3>Deploy Information</h3>
+    <mat-checkbox formControlName="dobuild">Do build</mat-checkbox>
+    <mat-checkbox formControlName="dodeploy">Do deploy</mat-checkbox>
+    <mat-checkbox formControlName="dobackout">Do back-out</mat-checkbox>
+    <mat-checkbox formControlName="doscan">Do Scan</mat-checkbox>
+    <mat-checkbox formControlName="dota">Do TA</mat-checkbox>
+    <mat-checkbox formControlName="dounittest">Do unit-testing</mat-checkbox>
+
+    <div class="button-row">
+      <!-- <button mat-raised-button color="primary" type="submit" [disabled]="dataMainService.form.invalid"
+          [disabled]="!dataMainService.form.dirty">Submit</button> -->
+      <!-- <button mat-raised-button color="warn">Clear</button> -->
+    </div>
+
+    <!-- </div>
+    </mat-grid-tile>
+  </mat-grid-list> -->
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" [disabled]="dataMainService.form.invalid"
+      [disabled]="!dataMainService.form.dirty">Submit</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>
